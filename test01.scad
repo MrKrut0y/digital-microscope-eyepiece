@@ -7,6 +7,18 @@ corner_round = 9;
 
 cube([width_phone, len_phone, thickness_phone], center=true);
 
+color("blue")
+translate([width_phone/2-50, len_phone/2-10, 0])
+cylinder(d=9, h = thickness_phone - 1);
+
+color("blue")
+translate([width_phone/2-50, len_phone/2-25, 0])
+cylinder(d=9, h = thickness_phone - 1);
+
+color("blue")
+translate([width_phone/2-40, len_phone/2-18, 0])
+cylinder(d=6, h = thickness_phone - 1);
+
 module smartphone() {
     hull() {
         color("red")
@@ -36,5 +48,5 @@ h = 3;
 
 smartphone();
 color("red")
-translate([-28, 37, 4])
+translate([-28, 37, 2])
 cube([25, 35, 2]);
