@@ -21,7 +21,7 @@ module camera() {
     cylinder(d=6, h = thickness_phone - 1);
 }
 
-module smartphone() {
+module smartphone_block() {
     hull() {
         color("red")
         translate([width_phone/2, len_phone/2, 0])
@@ -47,8 +47,12 @@ module smartphone() {
 
 h = 3;
 
+module smartphone() {
+    smartphone_block();
+    camera();
+    color("red")
+    translate([-28, 37, 2])
+    cube([25, 35, 2]);
+}
+
 smartphone();
-camera();
-color("red")
-translate([-28, 37, 2])
-cube([25, 35, 2]);
