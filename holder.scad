@@ -1,10 +1,47 @@
 len_phone = 145;
 d_screw_m4 = 4.5;
 width_phone = 56;
-thikness_holder = 6;
+thikness_holder = 4;
+thikness_phone = 8;
 append = 15;
+corner_round = 8;
+w_grip = 30;
 
-holder_set();
+//holder_set();
+//vertical_block(len_phone);
+rotate([0, 180, 0]);
+grip();
+
+module grip() {
+    difference() {
+        grip_base();
+        
+        color("red")
+        translate([0, w_grip/2, thikness_phone])
+        cube([w_grip+1, w_grip, 2*thikness_phone], center=true);
+        
+        translate([0, -w_grip/4, 0])
+        cylinder(d=d_screw_m4, 3*thikness_phone, center=true, $fn=32);
+    }
+}
+
+
+module grip_base() {
+    hull() {
+        translate([w_grip/2-corner_round/2, -w_grip/2, 0])
+        cylinder(d=corner_round, 2*thikness_phone, center=true);
+        
+        translate([-w_grip/2+corner_round/2, -w_grip/2, 0])
+        cylinder(d=corner_round, 2*thikness_phone, center=true);
+        
+        translate([w_grip/2-corner_round/2, w_grip/2, 0])
+        cylinder(d=corner_round, 2*thikness_phone, center=true);
+        
+        translate([-w_grip/2+corner_round/2, w_grip/2, 0])
+        cylinder(d=corner_round, 2*thikness_phone, center=true);
+    }
+}
+
 
 module horizontal_block(len_block, offset_vertical) {
     len_block = len_block + append;
@@ -31,7 +68,6 @@ module horizontal_block(len_block, offset_vertical) {
     }
 }
 
-vertical_block(len_phone);
 
 module vertical_block(len_block) {
     len_block = len_block + append;
