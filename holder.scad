@@ -97,7 +97,7 @@ module holder_set() {
     horizontal_block(len_block=width_phone, offset_vertical=10);
     vertical_block(len_block=len_phone);
     
-    translate([0, -len_phone/2, thikness_phone+thikness_holder/2])
+    translate([0, -len_phone/2, thikness_phone+thikness_holder/2+1])
     rotate([0, 180, 0])
     grip();
     
